@@ -44,5 +44,5 @@ def compute_gradient_logistic_regularized(y, tx, w, lambda_):
     
     y_hat                = sigmoid(tx.dot(w))
     gradient             = (np.transpose(tx)).dot(y_hat - y)
-    regularized_gradient = gradient + (2 * y.shape[0] * lambda_ * w)
+    regularized_gradient = gradient + (2 * lambda_ * w)
     return regularized_gradient

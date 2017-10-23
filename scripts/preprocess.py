@@ -1,48 +1,5 @@
 import numpy as np
 
-def standardize(x, with_ones = False):
-    mask = (x != -999)
-
-    # compute the mean and standard deviations
-    mean = (x * mask).sum(axis=0)/np.sum(mask, axis=0)
-    std_dev = np.sqrt((((x - mean) * mask)**2).sum(axis=0)/np.sum(mask, axis=0))
-    # print(std_dev)
-    # ------- standarization finish ------------
-    stand_x = (x * mask - mean)/std_dev
-
-    # --------- Setting -999 to 0 --------------
-    stand_x[~mask] = 0
-
-    # ---------- Add ones to the matrix --------
-    if with_ones:
-        tmp = np.ones([stand_x.shape[0], stand_x.shape[1] + 1])
-        tmp[:,1:] = stand_x
-        stand_x = tmp
-
-    return stand_x
-
-def standardize_with_median(x, with_ones = False):
-    mask = (x != -999)
-
-    # compute the mean and standard deviations
-    mean = (x * mask).sum(axis=0)/np.sum(mask, axis=0)
-    std_dev = np.sqrt((((x - mean) * mask)**2).sum(axis=0)/np.sum(mask, axis=0))
-    # print(std_dev)
-    # ------- standarization finish ------------
-    stand_x = (x * mask - mean)/std_dev
-
-    # --------- Setting -999 to 0 --------------
-    stand_x[~mask] = 0
-
-    # ---------- Add ones to the matrix --------
-    if with_ones:
-        tmp = np.ones([stand_x.shape[0], stand_x.shape[1] + 1])
-        tmp[:,1:] = stand_x
-        stand_x = tmp
-
-    return stand_x
-
-
 def standardize_with_power_terms(x, power, with_ones = True, impute_with = 'mean', with_sqrt = False):
     mask = (x != -999)
 
