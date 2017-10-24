@@ -21,7 +21,8 @@ def least_squares_GD(y, tx, initial_w, max_iters, gamma):
     for n_iter in range(max_iters):
         loss = compute_mse(y, tx, w)
         grad = compute_gradient_mse(y,tx,w)
-        w = w - gamma * grad
+        w    = w - gamma * grad
+        
     return w, loss
 
 
@@ -42,10 +43,11 @@ def least_squares_SGD(y, tx, initial_w, max_iters, gamma):
     w = initial_w
     
     for n_iter in range(max_iters):    
-        for minibatch_y, minibatch_x in batch_iter(y,tx,100):
+        for minibatch_y, minibatch_x in batch_iter(y, tx, 1):
             loss = compute_mse(minibatch_y, minibatch_x, w)
             grad = compute_gradient_mse(minibatch_y, minibatch_x, w) 
-            w = w - gamma * grad
+            w    = w - gamma * grad
+            
     return w, loss
 
 
@@ -60,9 +62,10 @@ def least_squares(y, tx):
         loss (float, scalar): Cost value by least squares normal equations.
     """
     
-    xt = tx.transpose()
-    w = np.linalg.solve(xt.dot(tx), xt.dot(y))
+    xt   = tx.transpose()
+    w    = np.linalg.solve(xt.dot(tx), xt.dot(y))
     loss = compute_rmse(y, tx, w)
+    
     return w, loss
 
 
@@ -78,9 +81,10 @@ def ridge_regression(y, tx, lambda_):
         loss (float, scalar): Cost value by least squares normal equations.
     """
     
-    xt = tx.transpose()
-    w = np.linalg.solve(xt.dot(tx) + lambda_ * (2 * y.shape[0]) * np.identity(xt.shape[0]), xt.dot(y))
+    xt   = tx.transpose()
+    w    = np.linalg.solve(xt.dot(tx) + lambda_ * (2 * y.shape[0]) * np.identity(xt.shape[0]), xt.dot(y))
     loss = compute_rmse(y, tx, w)
+    
     return w, loss
 
 
@@ -102,7 +106,8 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
     for n_iter in range(max_iters):
         loss = compute_loss_logistic(y, tx, w)
         grad = compute_gradient_logistic(y,tx,w)
-        w = w - gamma * grad
+        w    = w - gamma * grad
+        
     return w, loss
 
 
@@ -125,5 +130,6 @@ def reg_logistic_regression(y, tx, initial_w, max_iters, gamma, lambda_):
     for n_iter in range(max_iters):
         loss = compute_loss_logistic_regularized(y, tx, w, lambda_)
         grad = compute_gradient_logistic_regularized(y,tx,w, lambda_)
-        w = w - gamma * grad
+        w    = w - gamma * grad
+        
     return w, loss

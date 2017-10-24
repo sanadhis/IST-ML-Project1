@@ -26,7 +26,7 @@ def compute_gradient_logistic(y, tx, w):
         gradient (numpy array) : Matrix Gradient of size D x 1.
     """
     
-    y_hat = sigmoid(tx.dot(w))
+    y_hat    = sigmoid(tx.dot(w))
     gradient = (np.transpose(tx)).dot(y_hat - y)
     return gradient
 
