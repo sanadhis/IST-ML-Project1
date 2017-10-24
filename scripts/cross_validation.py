@@ -1,5 +1,4 @@
 import numpy as np
-from scripts.proj1_helpers import predict_labels
 
 def build_k_indices(y, k_fold, seed):
     """Function to build k indices for k-fold.
@@ -21,13 +20,14 @@ def build_k_indices(y, k_fold, seed):
                  for k in range(k_fold)])
     return k_indices
 
-def cross_validation(y, x, k_indices):
+def cross_validation(y, x, k_indices, k):
     """Function to split training data and test data using K-cross validation based on given k_indices.
 
     Args:
         y         (numpy array): Matrix output of size N x 1.
         tx        (numpy array): Matrix input of size N x D.
         k_indices (numpy array): Matrix of K x floor(N/K), as indices for unbiased test error of K-cross Validation.
+        k         (int)        : For choosing index in the k_indices
 
     Returns:
         x_train (numpy array) : Matrix input (features) for training set with size of (ratio*N) x D.
