@@ -1,4 +1,5 @@
 import numpy as np
+from scripts.proj1_helpers import predict_labels
 from scripts.helpers import batch_iter, sigmoid
 from scripts.costs import compute_mse, compute_rmse, compute_loss_logistic, compute_loss_logistic_regularized
 from scripts.gradients import compute_gradient_mse, compute_gradient_logistic, compute_gradient_logistic_regularized
@@ -14,23 +15,28 @@ def least_squares_GD(y, tx, initial_w, max_iters, gamma):
         max_iters (int)        : Maximum iteration for gradient descent training.
         gamma     (float)      : Step-size/learning rate constant.
     Returns:
-        w    (numpy array)  : Final weight matrix by gradient descent.
-        loss (float, scalar): Final cost value by gradient descent.
+        accuracies (list of test accuracy): Accuracies for each model.
     """
     k_fold                           = 10
-    k                                = np.random.randint(k_fold)
     seed                             = 1
     k_indices                        = build_k_indices(y, k_fold, seed)
-    x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
     
-    w = initial_w
+    w          = initial_w
+    ws         = []
+    accuracies = []
     
-    for n_iter in range(max_iters):
-        loss_train = compute_mse(y_train, x_train, w)
-        grad       = compute_gradient_mse(y_train, x_train, w)
-        w          = w - gamma * grad
-        loss_test  = compute_mse(y_test, x_test, w)
-    return w, loss_test
+    for k in range(k_fold):
+        x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
+
+        for n_iter in range(max_iters):
+            loss_train    = compute_mse(y_train, x_train, w)
+            grad          = compute_gradient_mse(y_train, x_train, w)
+            w             = w - gamma * grad
+        test_accuracy = (np.mean(predict_labels(w, x_test) == y_test))
+        ws.append(w)    
+        accuracies.append(test_accuracy)
+        
+    return accuracies
 
 
 # 2. Linear regression using stochastic gradient descent
@@ -43,27 +49,31 @@ def least_squares_SGD(y, tx, initial_w, max_iters, gamma):
         max_iters (int)        : Maximum iteration for gradient descent training.
         gamma     (float)      : Step-size/learning rate constant.
     Returns:
-        w    (numpy array)  : Final weight matrix by stochastic gradient descent.
-        loss (float, scalar): Final cost value by stochastic gradient descent.
+        accuracies (list of test accuracy): Accuracies for each model.
     """
     k_fold                           = 10
-    k                                = np.random.randint(k_fold)
     seed                             = 1
     k_indices                        = build_k_indices(y, k_fold, seed)
-    x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
     
-    w = initial_w
+    w          = initial_w
+    ws         = []
+    accuracies = []
     
-    for n_iter in range(max_iters):    
-        for minibatch_y, minibatch_x in batch_iter(y_train, x_train, 1):
-            
-            loss_train = compute_mse(minibatch_y, minibatch_x, w)
-            grad       = compute_gradient_mse(minibatch_y, minibatch_x, w) 
-            w          = w - gamma * grad
-        
-        loss_test =  compute_mse(y_test, x_test, w)
-    return w, loss_test
+    for k in range(k_fold):
+        x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
+    
+        for n_iter in range(max_iters):    
+            for minibatch_y, minibatch_x in batch_iter(y_train, x_train, 1):
 
+                loss_train = compute_mse(minibatch_y, minibatch_x, w)
+                grad       = compute_gradient_mse(minibatch_y, minibatch_x, w) 
+                w          = w - gamma * grad
+
+        test_accuracy = (np.mean(predict_labels(w, x_test) == y_test))
+        ws.append(w)    
+        accuracies.append(test_accuracy)
+        
+    return accuracies
 
 # 3. Least squares regression using normal equations
 def least_squares(y, tx):
@@ -72,21 +82,27 @@ def least_squares(y, tx):
         y         (numpy array): Matrix output of size N x 1.
         tx        (numpy array): Matrix input of size N x D.
     Returns:
-        w    (numpy array)  : Weight matrix by least squares normal equations.
-        loss (float, scalar): Cost value by least squares normal equations.
+        accuracies (list of test accuracy): Accuracies for each model.
     """
     k_fold                           = 10
-    k                                = np.random.randint(k_fold)
     seed                             = 1
     k_indices                        = build_k_indices(y, k_fold, seed)
-    x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
     
-    xt        = x_train.transpose()
-    w         = np.linalg.solve(xt.dot(x_train), xt.dot(y_train))
-    loss_test = compute_rmse(y_test, x_test, w)
+    ws         = []
+    accuracies = []
     
-    return w, loss_test
-
+    for k in range(k_fold):
+        x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
+        
+        xt = x_train.transpose()
+        w  = np.linalg.solve(xt.dot(x_train), xt.dot(y_train))
+    
+        test_accuracy = (np.mean(predict_labels(w, x_test) == y_test))
+        ws.append(w)    
+        accuracies.append(test_accuracy)
+    
+    return accuracies
+ 
 
 # 4. Ridge regression using normal equations
 def ridge_regression(y, tx, lambda_):
@@ -96,20 +112,25 @@ def ridge_regression(y, tx, lambda_):
         tx        (numpy array): Matrix input of size N x D.
         lambda_   (float)      : Lifting constant for ridge regression.
     Returns:
-        w    (numpy array)  : Weight matrix by least squares normal equations.
-        loss (float, scalar): Cost value by least squares normal equations.
+        accuracies (list of test accuracy): Accuracies for each model.
     """
     k_fold                           = 10
-    k                                = np.random.randint(k_fold)
     seed                             = 1
     k_indices                        = build_k_indices(y, k_fold, seed)
-    x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
     
-    xt        = x_train.transpose()
-    w         = np.linalg.solve(xt.dot(x_train) + lambda_ * (2 * y_train.shape[0]) * np.identity(xt.shape[0]), xt.dot(y_train))
-    loss_test = compute_rmse(y_test, x_test, w)
+    ws         = []
+    accuracies = []
+    for k in range(k_fold):
+        x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
+        
+        xt = x_train.transpose()
+        w  = np.linalg.solve(xt.dot(x_train) + lambda_ * (2 * y_train.shape[0]) * np.identity(xt.shape[0]), xt.dot(y_train))
     
-    return w, loss_test
+        test_accuracy = (np.mean(predict_labels(w, x_test) == y_test))
+        ws.append(w)    
+        accuracies.append(test_accuracy)
+    
+    return accuracies
 
 
 # 5. Logistic regression using gradient descent
@@ -122,23 +143,29 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
         max_iters (int)        : Maximum iteration for gradient descent training.
         gamma     (float)      : Step-size/learning rate constant.
     Returns:
-        w    (numpy array)  : Final weight matrix by logistic regression using gradient descent.
-        loss (float, scalar): Final cost value by logistic regression using gradient descent.
+        accuracies (list of test accuracy): Accuracies for each model.
     """
     k_fold                           = 10
-    k                                = np.random.randint(k_fold)
     seed                             = 1
     k_indices                        = build_k_indices(y, k_fold, seed)
-    x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
     
-    w = initial_w
+    w          = initial_w
+    ws         = []
+    accuracies = []
     
-    for n_iter in range(max_iters):
-        loss      = compute_loss_logistic(y_train, x_train, w)
-        grad      = compute_gradient_logistic(y_train, x_train, w)
-        w         = w - gamma * grad
-        loss_test = compute_loss_logistic(y_test, x_test, w)
-    return w, loss_test
+    for k in range(k_fold):
+        x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
+        
+        for n_iter in range(max_iters):
+            loss      = compute_loss_logistic(y_train, x_train, w)
+            grad      = compute_gradient_logistic(y_train, x_train, w)
+            w         = w - gamma * grad
+
+        test_accuracy = (np.mean(predict_labels(w, x_test) == y_test))
+        ws.append(w)    
+        accuracies.append(test_accuracy)
+    
+    return accuracies
 
 
 # 6. Regularized logistic regression using gradient descent
@@ -152,20 +179,27 @@ def reg_logistic_regression(y, tx, initial_w, max_iters, gamma, lambda_):
         gamma     (float)      : Step-size/learning rate constant.
         lambda    (float)      : Penalty constant.
     Returns:
-        w    (numpy array)  : Final weight matrix by regularized logistic regression using gradient descent.
-        loss (float, scalar): Final cost value by regularized logistic regression using gradient descent.
+        accuracies (list of test accuracy): Accuracies for each model.
     """
     k_fold                           = 10
-    k                                = np.random.randint(k_fold)
     seed                             = 1
     k_indices                        = build_k_indices(y, k_fold, seed)
-    x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
-         
-    w = initial_w
-    for n_iter in range(max_iters):
-        loss = compute_loss_logistic_regularized(y_train, x_train, w, lambda_)
-        grad = compute_gradient_logistic_regularized(y_train, x_train, w, lambda_)
-        w    = w - gamma * grad
-        loss_test = compute_loss_logistic_regularized(y_test, x_test, w, lambda_)
+    
+    w          = initial_w
+    ws         = []
+    accuracies = []
+    
+    for k in range(k_fold):
+        x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
         
-    return w, loss_test
+        for n_iter in range(max_iters):
+            loss = compute_loss_logistic_regularized(y_train, x_train, w, lambda_)
+            grad = compute_gradient_logistic_regularized(y_train, x_train, w, lambda_)
+            w    = w - gamma * grad
+            loss_test = compute_loss_logistic_regularized(y_test, x_test, w, lambda_)
+
+        test_accuracy = (np.mean(predict_labels(w, x_test) == y_test))
+        ws.append(w)    
+        accuracies.append(test_accuracy)
+    
+    return accuracies
