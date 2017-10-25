@@ -155,6 +155,7 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
     
     for k in range(k_fold):
         x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
+        y_train = (y_train + 1)/2
         
         for n_iter in range(max_iters):
             loss      = compute_loss_logistic(y_train, x_train, w)
@@ -191,6 +192,7 @@ def reg_logistic_regression(y, tx, initial_w, max_iters, gamma, lambda_):
     
     for k in range(k_fold):
         x_train, y_train, x_test, y_test = cross_validation(y, tx, k_indices, k)
+        y_train = (y_train + 1)/2
         
         for n_iter in range(max_iters):
             loss = compute_loss_logistic_regularized(y_train, x_train, w, lambda_)
