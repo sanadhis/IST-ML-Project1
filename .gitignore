@@ -1,3 +1,4 @@
 .*ipynb_checkpoints
 higgs-data/test.csv
 *__pycache__
+.DS_Store
