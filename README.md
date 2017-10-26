@@ -10,6 +10,12 @@ The main scripts for this project are implementations.py and run.py. In addition
 ## Important Notes for the Data
 **Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ directory.**
 
+## Project Structure
+- `higgs-data`: the CERN's public Higgs-Boson discovery data.
+- `report`: report in LaTeX
+- `scripts`: all main ML functions and helpers.
+- `setup`: Contains readme to give git syntax cheatsheet.
+
 ## ML Implementations - implementations.py
 We implement 6 ML methods as follows:
 1. least_squares_GD : (Linear Regression using Gradient Descent)
@@ -26,13 +32,6 @@ Our final result can be produced by executing script run.py.
   - **TBD** with **TBD%** of accuracy.
 * Private Leadeboard
   - **TBD** with **TBD%** of accuracy.
-
-## Project Structure
-
-- `higgs-data`: the CERN's public Higgs-Boson discovery data.
-- `report`: report in LaTeX
-- `scripts`: all main ML functions and helpers.
-- `setup`: Contains readme to give git syntax cheatsheet.
 
 ## How to use implementations.py
 
