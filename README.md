@@ -10,8 +10,8 @@ The main scripts for this project are implementations.py and run.py. In addition
 We implement 6 ML methods as follows:
 1. Linear Regression using Gradient Descent. (least_squares_GD)
 2. Linear Regression using Stochastic Gradient Descent. (least_squares_SGD)
-3. Linear Regression using normal equations. (least_squares) 
-4. Ridge Regression using normal equations. (ridge_regression)
+3. Linear Regression using Normal Equations. (least_squares) 
+4. Ridge Regression using Normal Equations. (ridge_regression)
 5. Logistic Regression using Gradient Descent. (logistic_regression)
 6. Regularized Logistic Regression using Gradient Descent. (reg_logistic_regression)
 
@@ -42,7 +42,7 @@ Our final result can be produced by executing script run.py.
   weights, loss = least_squares_GD(y, tx, initial_w, max_iters, gamma)
   ```
 
-  or import all methods
+  or import all methods all at once.
   ```python
   from scripts.implementations.py import *
   # Example to run least squares with normal equations
