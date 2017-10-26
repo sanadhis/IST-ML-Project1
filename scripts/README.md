@@ -1,7 +1,7 @@
 ## Scripts
 All our scripts for doing features generation and machine learning processing can be found here.
 
-### implementations.py:
+### implementations.py
 This script contain the six mandatory algorithms:
 1. Linear Regression using Gradient Descent. (least_squares_GD)
 2. Linear Regression using Stochastic Gradient Descent. (least_squares_SGD)
@@ -10,35 +10,35 @@ This script contain the six mandatory algorithms:
 5. Logistic Regression using Gradient Descent. (logistic_regression)
 6. Regularized Logistic Regression using Gradient Descent. (reg_logistic_regression)
 
-### costs.py:
-This script contain four functions to compute four kind of cost:
-1. Mean Square Error (MSE). (compute_mse)
-2. Root Mean Square Error (RMSE). (compute_rmse)
-3. Loss of Logistic Regression. (compute_loss_logistic) 
-4. Loss of Regularized Logistic Regression. (compute_loss_logistic_regularized)
+### costs.py
+contains four functions to compute four kind of cost:
+1. compute_mse : (Mean Square Error (MSE))
+2. compute_rmse : (Root Mean Square Error (RMSE))
+3. compute_loss_logistic : (Loss of Logistic Regression) 
+4. compute_loss_logistic_regularized : (Loss of Regularized Logistic Regression)
 
-### gradients.py:
-This script contain three functions to compute three kind of gradient:
-1. Gradient of Mean Square Error. (compute_gradient_mse)
-2. Gradient of Logistic Regression. (compute_gradient_logistic)
-3. Gradient of Regularized Logistic Regression. (compute_gradient_logistic_regularized) 
+### gradients.py
+contains three functions to compute three kind of gradient:
+1. compute_gradient_mse : (Gradient of Mean Square Error)
+2. compute_gradient_logistic : (Gradient of Logistic Regression)
+3. compute_gradient_logistic_regularized : (Gradient of Regularized Logistic Regression)
 
-### helpers.py:
-This script contain the two helper functions:
-1. Sigmoid for Logistic Regression. (sigmoid)
-2. Minibatch Iterator for Stochastic Gradient Descent. (batch_iter)
+### helpers.py
+contains the two helper functions:
+1. sigmoid : (Sigmoid for Logistic Regression)
+2. batch_iter : (Minibatch Iterator for Stochastic Gradient Descent)
 
-### preprocess.py:
-This script contain our functions for data processing and features generation:
-1. Polynomial basis with features generation. (standardize_with_power_terms)
+### preprocess.py
+contains our functions for data processing and features generation:
+1. standardize_with_power_terms : (Polynomial basis with features generation)
 
-### proj1_helpers.py:
-This script contain the three helpers function related of reading data and making submission file:
-1. Loading csv data and performing initial processing. (load_csv_data)
-2. Making prediction for given weights. (predict_labels)
-3. Creating submission to kaggle in csv format. (create_csv_submission) 
+### proj1_helpers.py
+contains the three helpers function related of reading data and making submission file:
+1. load_csv_data : (Loading csv data and performing initial processing)
+2. predict_labels : (Making prediction for given weights)
+3. create_csv_submission : (Creating submission to kaggle in csv format) 
 
-### cross_validation.py:
+### cross_validation.py
 This script contain the two functions related to k-fold cross validation:
-1. Building k-indices for k-fold. (build_k_indices)
-2. Splitting data as training and test set for cross validation. (cross_validation)
+1. build_k_indices : (Building k-indices for k-fold)
+2. cross_validation : (Splitting data as training and test set for cross validation)
