@@ -2,7 +2,14 @@
 
 [CS-433 PCML](http://isa.epfl.ch/imoniteur_ISAP/!itffichecours.htm?ww_i_matiere=2217650315&ww_x_anneeAcad=2017-2018&ww_i_section=249847&ww_i_niveau=&ww_c_langue=en) - [EPFL](http://epfl.ch)
 
-> Discovery of Higgs Boson using CERN's public dataset.
+> Discovery of Higgs Boson using CERN's public dataset. The submission is made to competition platform [kaggle](https://www.kaggle.com/c/epfml-higgs)
+
+## Final Submission Result
+
+* Public leaderboard
+  - **TBD** with **TBD%** of accuracy.
+* Private Leadeboard
+  - **TBD** with **TBD%** of accuracy.
 
 ## Project Structure
 
@@ -33,7 +40,7 @@
   ```python
   from scripts.implementations.py import *
   # Example to run least squares with normal equations
-  weights, loss = least_squares_GD(y, tx)
+  weights, loss = least_squares(y, tx)
   ```
 
 ## How to use - Jupyter Notebook
