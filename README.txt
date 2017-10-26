@@ -31,9 +31,9 @@ We implement 6 ML methods in implementations.py as follows:
 
 We produce our final submission using run.py with the result as follows:
 Public leaderboard:
-  - TBD% of accuracy.
+  - 82.254% of accuracy.
 Private Leadeboard:
-  - TBD% of accuracy.
+  - 82.254% of accuracy.
 
 
 How to use implementations.py:
