@@ -12,13 +12,14 @@ def standardize_with_power_terms(x, power, with_ones = True, impute_with = 'mean
 
     if with_sqrt:
         for i in range(x.shape[1]):
-            if all(num > 0 for num in x[:,i]):
-                x_sqrt = 1/(1+np.log(x[:,i]))
-                x_sqrt = (x_sqrt - np.mean(x_sqrt))/np.std(x_sqrt)
-                stand_x = np.concatenate((stand_x,x_sqrt.reshape([x.shape[0],1])),1)
-                x_sqrt = np.log(1 + x[:,i])
-                x_sqrt = (x_sqrt - np.mean(x_sqrt))/np.std(x_sqrt)
-                stand_x = np.concatenate((stand_x,x_sqrt.reshape([x.shape[0],1])),1)
+            # if all(num > 0 for num in stand_x[:,i]):
+            min_ = np.min(x[:, i])
+            x_sqrt = 1/(1+np.log(1 + x[:,i] - min_))
+            x_sqrt = (x_sqrt - np.mean(x_sqrt))/np.std(x_sqrt)
+            stand_x = np.concatenate((stand_x,x_sqrt.reshape([x.shape[0],1])),1)
+            x_sqrt = np.log(1 + x[:,i] - min_)
+            x_sqrt = (x_sqrt - np.mean(x_sqrt))/np.std(x_sqrt)
+            stand_x = np.concatenate((stand_x,x_sqrt.reshape([x.shape[0],1])),1)
 
     x_tmp = x
     for deg in range(2, power + 1):
