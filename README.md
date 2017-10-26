@@ -23,6 +23,9 @@ Our final result can be produced by executing script run.py.
 * Private Leadeboard
   - **TBD** with **TBD%** of accuracy.
 
+## Important Notes
+**Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ directory.**
+
 ## Project Structure
 
 - `higgs-data`: the CERN's public Higgs-Boson discovery data.
@@ -60,7 +63,7 @@ Our final result can be produced by executing script run.py.
   $ python run.py
   ```
 
-## How to use implementations.ipynb or run.ipynb - Jupyter Notebook
+## How to use implementations.ipynb - Jupyter Notebook
 
 1. Install [Anaconda](https://www.continuum.io/downloads)
 2. Clone this repository
@@ -70,11 +73,7 @@ Our final result can be produced by executing script run.py.
   $ cd IST_ML_PROJECT1/
   $ jupyter-notebook implementations.ipynb
   ```
-  or
-  ```bash
-  $ cd IST_ML_PROJECT1/
-  $ jupyter-notebook run.ipynb
-  ```
+
 4. Follow the steps on each cell to produce and display results in nice HTML format.
 
 ## Team - IST
