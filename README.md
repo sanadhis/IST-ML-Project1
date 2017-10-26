@@ -30,15 +30,15 @@ We implement 6 ML methods as follows:
 Our final result can be produced by executing script run.py.
 
 * Public leaderboard
-  - **TBD** with **TBD%** of accuracy.
+  - **TBD%** of accuracy.
 * Private Leadeboard
-  - **TBD** with **TBD%** of accuracy.
+  - **TBD%** of accuracy.
 
 ## How to use implementations.py
 
 1. Ensure that you have python 3 in your machine.
 2. Clone this repository
-3. To reuse either one of six implementations of ML methods. Load the implementations.py script and pass the required parameters:
+3. To reuse either one of six implementations of ML methods. Load the functions from implementations.py script and pass the required parameters:
 
   ```python
   from implementations.py import [function]

@@ -31,15 +31,14 @@ We implement 6 ML methods in implementations.py as follows:
 
 We produce our final submission using run.py with the result as follows:
 Public leaderboard:
-  - TBD with TBD% of accuracy.
+  - TBD% of accuracy.
 Private Leadeboard:
-  - TBD with TBD% of accuracy.
+  - TBD% of accuracy.
 
 
 How to use implementations.py:
 1. Ensure that you have python 3 in your machine.
-2. Clone this repository
-3. To reuse either one of six implementations of ML methods. Load the implementations.py script and pass the required parameters:
+2. To reuse either one of six implementations of ML methods, load the functions from implementations.py script and pass the required parameters:
   # In python
   from implementations.py import *
   # Example to run linear regression using gradient descent
@@ -48,21 +47,17 @@ How to use implementations.py:
 
 How to use run.py:
 1. Ensure that you have python 3 in your machine.
-2. Clone this repository
-3. Run the run.py to create our final submission file to [kaggle](https://www.kaggle.com/c/epfml-higgs/leaderboard):
+2. Run the run.py to create our final submission file to kaggle:
   # Execute in shell terminal
-  $ cd IST_ML_PROJECT1/
   $ python run.py
 
 
 How to use implementations.ipynb - Jupyter Notebook:
-1. Install [Anaconda](https://www.continuum.io/downloads)
-2. Clone this repository
-3. Run the jupyter-notebook (default is enabled by conda) in terminal:
+1. Install Anaconda
+2. Run the jupyter-notebook (default is enabled by conda) in terminal:
   # Execute in shell terminal  
-  $ cd IST_ML_PROJECT1/
   $ jupyter-notebook implementations.ipynb
-4. Follow the steps on each cell to produce and display results in nice HTML format.
+3. Follow the steps on each cell to produce and display results in nice HTML format.
 
 
 Team - IST:
