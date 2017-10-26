@@ -4,8 +4,9 @@
 
 > Discovery of Higgs Boson using CERN's public dataset. The submission is made to competition platform [kaggle](https://www.kaggle.com/c/epfml-higgs).
 
-The main scripts for this project are implementations.py and run.py. In addition, we create python notebooks, namely implementations.ipynb and run.ipynb, to nicely document, reuse, and display both of our main scripts process step-by-step.
-<br />**Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory**.
+The main scripts for this project are implementations.py and run.py. In addition, we create python notebook, namely implementations.ipynb, to nicely document, reuse, and display processes in implementations.py scripts step-by-step.
+<br /><br />
+**Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory**.
 
 ## Important Notes for the Data
 **Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ directory.**

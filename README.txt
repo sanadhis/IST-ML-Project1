@@ -8,8 +8,8 @@ The submission is made to Kaggle competition platform.
 
 Brief Overview:
 The main scripts for this project are implementations.py and run.py. 
-In addition, we create python notebooks, namely implementations.ipynb and run.ipynb, to nicely document, reuse, and display 
-both of our main scripts process step-by-step.
+In addition, we create python notebook, namely implementations.ipynb, to nicely document, reuse, and display 
+processes in implementations.py scripts step-by-step.
 Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory.
 
 Important Notes for the Data
