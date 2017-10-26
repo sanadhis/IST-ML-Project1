@@ -5,15 +5,19 @@
 > Discovery of Higgs Boson using CERN's public dataset. The submission is made to competition platform [kaggle](https://www.kaggle.com/c/epfml-higgs).
 
 The main scripts for this project are implementations.py and run.py. In addition, we create python notebooks, namely implementations.ipynb and run.ipynb, to nicely document, reuse, and display both of our main scripts process step-by-step.
+**Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory**.
+
+## Important Notes for the Data
+**Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ directory.**
 
 ## ML Implementations - implementations.py
 We implement 6 ML methods as follows:
-1. Linear Regression using Gradient Descent. (least_squares_GD)
-2. Linear Regression using Stochastic Gradient Descent. (least_squares_SGD)
-3. Linear Regression using Normal Equations. (least_squares) 
-4. Ridge Regression using Normal Equations. (ridge_regression)
-5. Logistic Regression using Gradient Descent. (logistic_regression)
-6. Regularized Logistic Regression using Gradient Descent. (reg_logistic_regression)
+1. least_squares_GD : (Linear Regression using Gradient Descent. ()
+2. least_squares_SGD : (Linear Regression using Stochastic Gradient Descent)
+3. least_squares : (Linear Regression using Normal Equations.)
+4. ridge_regression : (Ridge Regression using Normal Equations)
+5. logistic_regression : (Logistic Regression using Gradient Descent)
+6. reg_logistic_regression : (Regularized Logistic Regression using Gradient Descent)
 
 ## Final Submission Result - run.py
 Our final result can be produced by executing script run.py.
@@ -22,9 +26,6 @@ Our final result can be produced by executing script run.py.
   - **TBD** with **TBD%** of accuracy.
 * Private Leadeboard
   - **TBD** with **TBD%** of accuracy.
-
-## Important Notes
-**Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ directory.**
 
 ## Project Structure
 
@@ -40,14 +41,14 @@ Our final result can be produced by executing script run.py.
 3. To reuse either one of six implementations of ML methods. Load the implementations.py script and pass the required parameters:
 
   ```python
-  from scripts.implementations.py import [function]
+  from implementations.py import [function]
   # Example to run linear regression using gradient descent
   weights, loss = least_squares_GD(y, tx, initial_w, max_iters, gamma)
   ```
 
   or import all methods all at once.
   ```python
-  from scripts.implementations.py import *
+  from implementations.py import *
   # Example to run least squares with normal equations
   weights, loss = least_squares(y, tx)
   ```
