@@ -5,14 +5,14 @@
 > Discovery of Higgs Boson using CERN's public dataset. The submission is made to competition platform [kaggle](https://www.kaggle.com/c/epfml-higgs).
 
 The main scripts for this project are implementations.py and run.py. In addition, we create python notebooks, namely implementations.ipynb and run.ipynb, to nicely document, reuse, and display both of our main scripts process step-by-step.
-**Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory**.
+<br />**Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory**.
 
 ## Important Notes for the Data
 **Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ directory.**
 
 ## ML Implementations - implementations.py
 We implement 6 ML methods as follows:
-1. least_squares_GD : (Linear Regression using Gradient Descent. ()
+1. least_squares_GD : (Linear Regression using Gradient Descent)
 2. least_squares_SGD : (Linear Regression using Stochastic Gradient Descent)
 3. least_squares : (Linear Regression using Normal Equations.)
 4. ridge_regression : (Ridge Regression using Normal Equations)

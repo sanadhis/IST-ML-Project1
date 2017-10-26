@@ -16,7 +16,7 @@ Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ dire
 
 ML Implementations using implementations.py
 We implement 6 ML methods as follows:
-1. least_squares_GD : (Linear Regression using Gradient Descent. ()
+1. least_squares_GD : (Linear Regression using Gradient Descent)
 2. least_squares_SGD : (Linear Regression using Stochastic Gradient Descent)
 3. least_squares : (Linear Regression using Normal Equations.)
 4. ridge_regression : (Ridge Regression using Normal Equations)
