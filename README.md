@@ -2,9 +2,21 @@
 
 [CS-433 PCML](http://isa.epfl.ch/imoniteur_ISAP/!itffichecours.htm?ww_i_matiere=2217650315&ww_x_anneeAcad=2017-2018&ww_i_section=249847&ww_i_niveau=&ww_c_langue=en) - [EPFL](http://epfl.ch)
 
-> Discovery of Higgs Boson using CERN's public dataset. The submission is made to competition platform [kaggle](https://www.kaggle.com/c/epfml-higgs)
+> Discovery of Higgs Boson using CERN's public dataset. The submission is made to competition platform [kaggle](https://www.kaggle.com/c/epfml-higgs).
 
-## Final Submission Result
+The main scripts for this project are implementations.py and run.py. In addition, we create python notebooks, namely implementations.ipynb and run.ipynb, to nicely document, reuse, and display both of our main scripts process step-by-step.
+
+## ML Implementations - implementations.py
+We implement 6 ML methods as follows:
+1. Linear Regression using Gradient Descent. (least_squares_GD)
+2. Linear Regression using Stochastic Gradient Descent. (least_squares_SGD)
+3. Linear Regression using normal equations. (least_squares) 
+4. Ridge Regression using normal equations. (ridge_regression)
+5. Logistic Regression using Gradient Descent. (logistic_regression)
+6. Regularized Logistic Regression using Gradient Descent. (reg_logistic_regression)
+
+## Final Submission Result - run.py
+Our final result can be produced by executing script run.py.
 
 * Public leaderboard
   - **TBD** with **TBD%** of accuracy.
@@ -18,17 +30,11 @@
 - `scripts`: all main ML functions and helpers.
 - `setup`: Contains readme to give git syntax cheatsheet.
 
-## How to use - Execute using Python Runtime only
+## How to use implementations.py
 
 1. Ensure that you have python 3 in your machine.
-2. Run the run.py to create our final submission file to [kaggle](https://www.kaggle.com/c/epfml-higgs/leaderboard):
-
-  ```bash
-  $ cd IST_ML_PROJECT1/
-  $ python run.py
-  ```
-
-3. To reuse either one of six ML implementations method. Load the implementations.py script and pass the required parameters:
+2. Clone this repository
+3. To reuse either one of six implementations of ML methods. Load the implementations.py script and pass the required parameters:
 
   ```python
   from scripts.implementations.py import [function]
@@ -43,7 +49,18 @@
   weights, loss = least_squares(y, tx)
   ```
 
-## How to use - Jupyter Notebook
+## How to use run.py
+
+1. Ensure that you have python 3 in your machine.
+2. Clone this repository
+3. Run the run.py to create our final submission file to [kaggle](https://www.kaggle.com/c/epfml-higgs/leaderboard):
+
+  ```bash
+  $ cd IST_ML_PROJECT1/
+  $ python run.py
+  ```
+
+## How to use implementations.ipynb or run.ipynb - Jupyter Notebook
 
 1. Install [Anaconda](https://www.continuum.io/downloads)
 2. Clone this repository
@@ -55,9 +72,9 @@
   ```
   or
   ```bash
+  $ cd IST_ML_PROJECT1/
   $ jupyter-notebook run.ipynb
   ```
-
 4. Follow the steps on each cell to produce and display results in nice HTML format.
 
 ## Team - IST
