@@ -1,6 +1,6 @@
 import numpy as np
 from scripts.proj1_helpers import *
-from scripts.preprocess import standardize_with_power_terms
+from scripts.preprocess import generate_features
 from implementations import logistic_regression
 
 def print_banner(message):
@@ -40,7 +40,7 @@ def remove_features(sets_x, unused_features):
 def standardize(sets_x):
     l = []
     for x in sets_x:
-        l.append(standardize_with_power_terms(x, 2, True, with_sqrt=True))
+        l.append(generate_features(x, 2, True, with_sqrt=True))
     return l
 
 def make_submission_file(w, features_reductions, filename="prediction.csv"):
@@ -64,7 +64,7 @@ def make_submission_file(w, features_reductions, filename="prediction.csv"):
     for x, w, index in zip(test_sets_x, w, indices):
 
         # Perform z-score standardization and transform matrix features of test data into polynomial basis   
-        stand_x = standardize_with_power_terms(x, 2, True, with_sqrt=True)
+        stand_x = generate_features(x, 2, True, with_sqrt=True)
 
         # Get the prediction
         y_pred[index] = predict_labels(w, stand_x)
