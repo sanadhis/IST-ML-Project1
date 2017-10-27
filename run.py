@@ -40,7 +40,7 @@ def remove_features(sets_x, unused_features):
 def standardize(sets_x):
     l = []
     for x in sets_x:
-        l.append(generate_features(x, 2, True, with_sqrt=True))
+        l.append(generate_features(x, 2, True, with_log=True))
     return l
 
 def make_submission_file(w, features_reductions, filename="prediction.csv"):
@@ -64,7 +64,7 @@ def make_submission_file(w, features_reductions, filename="prediction.csv"):
     for x, w, index in zip(test_sets_x, w, indices):
 
         # Perform z-score standardization and transform matrix features of test data into polynomial basis   
-        stand_x = generate_features(x, 2, True, with_sqrt=True)
+        stand_x = generate_features(x, 2, True, with_log=True)
 
         # Get the prediction
         y_pred[index] = predict_labels(w, stand_x)
