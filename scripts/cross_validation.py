@@ -31,9 +31,9 @@ def cross_validation(y, x, k_indices, k):
 
     Returns:
         x_train (numpy array) : Matrix input (features) for training set with size of (ratio*N) x D.
-        y_train (numpy array) : Matrix output for training set with size of (ratio*N) x D.
+        y_train (numpy array) : Matrix output for training set with size of (ratio*N) x 1.
         x_test  (numpy array) : Matrix input (features) for testing set with size of ((1-ratio)*N) x D.
-        y_test  (numpy array) : Matrix output for testing set with size of ((1-ratio)*N) x D.
+        y_test  (numpy array) : Matrix output for testing set with size of ((1-ratio)*N) x 1.
     """
     
     train_set_indices               = np.ones(x.shape[0], dtype = bool)
