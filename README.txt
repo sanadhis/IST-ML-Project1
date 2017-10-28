@@ -57,6 +57,7 @@ We implement 6 ML methods in implementations.py as follows:
 6. reg_logistic_regression : (Regularized Logistic Regression using Gradient Descent)
 
 We produce our final submission using run.py with the result as follows:
+Note: In run.py, **_we use logistic regression_** to produce our final submission.
 Public leaderboard:
   - 82.254% of accuracy.
 Private Leadeboard:

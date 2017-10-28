@@ -49,6 +49,7 @@ We implement 6 ML methods as follows:
 
 ## run.py - Creating Final Submission File  
 Our final result can be produced by executing script run.py.
+<br />In run.py, **_we use logistic regression_** to produce our final submission.
 
 * Public leaderboard
   - **82.254%** of accuracy.
