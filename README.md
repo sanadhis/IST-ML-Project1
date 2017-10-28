@@ -20,7 +20,7 @@ We devide the input data into 8 subsets based on the value of PRI_JET_NUM (featu
 ####
 From these 4 subgroups, we devide again each subgroup into two subsets based on outliers on DER_MASS_MMC.
 So at the end, we have **8 subsets** of data to obtain a model each.
-<br /><br />We define this step directly in both *implementations.py* and *run.py*. In run.py, it is described on **create_subsets()** and **remove_features()** functions.
+<br /><br />We define this step directly in both *implementations.ipynb* and *run.py*. In run.py, it is described on **create_subsets()** and **remove_features()** functions.
 
 ### Features Processing and Generation
 For each subset of input x, we process the features based on Standard score (z-score) and then expand them using logarithmic basis function and polynomial basis function. 
