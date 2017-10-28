@@ -1,4 +1,4 @@
-## Scripts
+Scripts
 All scripts with functions and helpers to perform our machine learning project.
 
 ### costs.py
