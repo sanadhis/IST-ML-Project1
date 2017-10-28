@@ -22,7 +22,7 @@ So at the end, we have **8 subsets** of data to obtain a model each.
 <br />We define this step directly in both implementations.py and run.py. In run.py, it is described on create_subsets() and remove_features() functions.
 
 ### Features Processing and Generation
-For each subsets of input x, we process the features based on Standard score (z-score) and then expand them using logarithmic basis function and polynomial basis function. 
+For each subset of input x, we process the features based on Standard score (z-score) and then expand them using logarithmic basis function and polynomial basis function. 
 <br />The implementations of this step are written in preprocess.py on scripts/preprocess.py
 
 ### Cross-validation
