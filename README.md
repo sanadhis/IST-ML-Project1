@@ -4,20 +4,20 @@
 
 > Discovery of Higgs Boson using CERN's public dataset. The submission is made to competition platform [kaggle](https://www.kaggle.com/c/epfml-higgs).
 
-The main scripts for this project are implementations.py and run.py. In addition, we create python notebook, namely implementations.ipynb, to nicely document, reuse, and display processes in implementations.py scripts step-by-step.
+The main scripts for this project are implementations.py (six ML methods) and run.py. 
+<br />In addition, we create python notebook, namely implementations.ipynb, to nicely document, reuse, and display processes in implementations.py scripts step-by-step. We also document how we process the features in dataset and perform our classification methods.
 <br /><br />
-**Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory**.
+** Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory, for more detail you can go through README in scripts/ **.
 
-## Important Notes for the Data
+## Important Notes for the Datasets
 **Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ directory.**
 
 ## Project Structure
-- `higgs-data`: the CERN's public Higgs-Boson discovery data.
+- `higgs-data`: the CERN's public Higgs-Boson discovery datasets.
 - `report`: report in LaTeX
 - `scripts`: all main ML functions and helpers.
-- `setup`: Contains readme to give git syntax cheatsheet.
 
-## ML Implementations - implementations.py
+## implementations.py - 6 Mandatory ML Methods  
 We implement 6 ML methods as follows:
 1. least_squares_GD : (Linear Regression using Gradient Descent)
 2. least_squares_SGD : (Linear Regression using Stochastic Gradient Descent)
@@ -26,7 +26,7 @@ We implement 6 ML methods as follows:
 5. logistic_regression : (Logistic Regression using Gradient Descent)
 6. reg_logistic_regression : (Regularized Logistic Regression using Gradient Descent)
 
-## Final Submission Result - run.py
+## run.py - Creating Final Submission File  
 Our final result can be produced by executing script run.py.
 
 * Public leaderboard
@@ -78,7 +78,7 @@ Our final result can be produced by executing script run.py.
 4. Follow the steps on each cell to produce and display results in nice HTML format.
 
 ## Team - IST
-
+[Project Repository Page](https://github.com/sanadhis/IST_ML_Project1)
 - Cheng-Chun Lee ([@wlo2398219](https://github.com/wlo2398219)) : (cheng-chun.lee@epfl.ch)
 - Haziq Razali ([@haziqrazali](https://github.com/haziqrazali)): (muhammad.binrazali@epfl.ch)
 - Sanadhi Sutandi ([@sanadhis](https://github.com/sanadhis)) : (i.sutandi@epfl.ch)

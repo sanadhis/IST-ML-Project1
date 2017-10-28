@@ -7,19 +7,20 @@ Simulate discovery of Higgs Boson using CERN's public dataset.
 The submission is made to Kaggle competition platform.
 
 Brief Overview:
-The main scripts for this project are implementations.py and run.py. 
-In addition, we create python notebook, namely implementations.ipynb, to nicely document, reuse, and display 
-processes in implementations.py scripts step-by-step.
-Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory.
+The main scripts for this project are implementations.py (six ML methods) and run.py. 
+In addition, we create python notebook, namely implementations.ipynb, to nicely document, reuse, and display processes in 
+implementations.py scripts step-by-step. We also document how we process the features in dataset and perform our 
+classification methods.
+Note that all functions and helpers for the implementations.py and run.py are stored in scripts/ directory, for more detail 
+you can go through README in scripts/.
 
-Important Notes for the Data
+Important Notes for the Datasets
 Please simply put the two data-sets (train.csv and test.csv) in higgs-data/ directory.
 
 Project Structure:
-- higgs-data: the CERN's public Higgs-Boson discovery data.
+- higgs-data: the CERN's public Higgs-Boson discovery datasets.
 - report: report in LaTeX
 - scripts: all main ML functions and helpers.
-- setup: Contains readme to give git syntax cheatsheet.
 
 We implement 6 ML methods in implementations.py as follows:
 1. least_squares_GD : (Linear Regression using Gradient Descent)
@@ -64,3 +65,5 @@ Team - IST:
 - Cheng-Chun Lee : (cheng-chun.lee@epfl.ch)
 - Haziq Razali : (muhammad.binrazali@epfl.ch)
 - Sanadhi Sutandi : (i.sutandi@epfl.ch)
+
+Project Repository Page: https://github.com/sanadhis/IST_ML_Project1
