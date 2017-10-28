@@ -17,6 +17,7 @@ We devide the input data into 8 subsets based on the value of PRI_JET_NUM (featu
 2. For PRI_JET_NUM = 1, remove features: [4, 5, 6, 11, 12, 15, 18, 20, 22, 26, 27, 28].
 3. For PRI_JET_NUM = 2, remove features: [11, 15, 18, 20, 22, 28].
 4. For PRI_JET_NUM = 3, remove features: [11, 15, 18, 20, 22, 28].
+###
 <br />From these 4 subgroups, we devide again each subgroup into two subsets based on outliers on DER_MASS_MMC.
 So at the end, we have **8 subsets** of data to obtain a model each.
 <br />We define this step directly in both implementations.py and run.py. In run.py, it is described on create_subsets() and remove_features() functions.
