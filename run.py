@@ -29,7 +29,7 @@ def create_subsets(x, y):
     sets_y = []
     indices = []
 
-    # iterate through value of PRI_JET_NUM (from 1 until 4)
+    # iterate through value of PRI_JET_NUM (ranged inclusively from 0 until 3)
     for pri_jet_num_val in np.unique(x[:,22]):
         
         # Find subset which DER_MASS_MMC is not equal to -999
@@ -148,7 +148,7 @@ if __name__ == "__main__":
     raw_y, raw_x, ind = load_csv_data('higgs-data/train.csv')
 
     """
-        Based on PRI_JET_NUM (feature 22), which ranged in value of inclusive [0,4], we devide the training 
+        Based on PRI_JET_NUM (feature 22), which ranged in value of inclusive [0,3], we devide the training 
         data into 4 groups. From these 4 groups, we devide again each of them into 2 subsets based on outliers (-999) 
         value in DER_MASS_MMC (feature 1). So these approach give us 8 subsets to train and to obtain the 8 
         corresponding models (weights).
