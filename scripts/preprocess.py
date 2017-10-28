@@ -129,7 +129,7 @@ def generate_features(x, degree, with_ones = True, with_log = False):
         preprocessed_x = np.concatenate((preprocessed_x, log_features_x), axis = 1)
 
     # generate polynomial basis function for matrix input x
-    poly_features_x    = polynomial_basis(x, power)
+    poly_features_x    = polynomial_basis(x, degree)
     
     # iterate through the polynomial features of x (through degree)
     for poly_x in poly_features_x:
