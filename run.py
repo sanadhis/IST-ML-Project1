@@ -4,46 +4,107 @@ from scripts.preprocess import generate_features
 from implementations import logistic_regression
 
 def print_banner(message):
+    """Function to print message in nicer way.
+    Args:
+        message (string): The message
+    Returns:
+        void
+    """
+
     print("#############################################################################")
     print(message)
     
 def create_subsets(x, y):
+    """Function to divide dataset into 8 subsets based on PRI_JET_NUM and DER_MASS_MMC.
+    Args:
+        x       (numpy array)         : Matrix features of size N x D.
+        y       (numpy array)         : Matrix output of size N x 1.        
+    Returns:
+        sets_x  (list of numpy arrays): List contains 8 subsets data from matrix features x.
+        sets_y  (list of numpy arrays): List contains 8 subsets data from matrix output y.
+        indices (list of numpy arrays): List contains 8 subsets of indices for each subset.
+    """
+    # initiate empty list for return variables.
     sets_x = []
     sets_y = []
-    indexes = []
+    indices = []
+
+    # iterate through value of PRI_JET_NUM (from 1 until 4)
     for pri_jet_num_val in np.unique(x[:,22]):
         
-        indices = (x[:,22] == pri_jet_num_val) & (x[:,0] != -999)
-        x_tmp   = x[indices,:]
-        y_tmp   = y[indices]
+        # Find subset which DER_MASS_MMC is not equal to -999
+        mask = (x[:,22] == pri_jet_num_val) & (x[:,0] != -999)
+        x_tmp   = x[mask,:]
+        y_tmp   = y[mask]
 
+        # store the subset into list
         sets_x.append(x_tmp)
         sets_y.append(y_tmp)
-        indexes.append(indices)
+        indices.append(mask)
 
-        indices = (x[:,22] == pri_jet_num_val) & (x[:,0] == -999)
-        x_tmp   = x[indices,:]
-        y_tmp   = y[indices]
+        # Find subset which DER_MASS_MMC is equal to -999
+        mask = (x[:,22] == pri_jet_num_val) & (x[:,0] == -999)
+        x_tmp   = x[mask,:]
+        y_tmp   = y[mask]
 
+        # store the subset into list
         sets_x.append(x_tmp)
         sets_y.append(y_tmp)
-        indexes.append(indices)        
+        indices.append(mask)        
         
-    return sets_x, sets_y, indexes
+    # return subsets of x, y, and corresponding indices
+    return sets_x, sets_y, indices
 
 def remove_features(sets_x, unused_features):
-    l = []    
+    """Function to remove insignificant features for each subset of x.
+    Args:
+        sets_x           (list of numpy arrays): List contains 8 subsets data from matrix features x.    
+        unused_features  (list of int)         : List contains unused features for each subset of x.
+    Returns:
+        significant_x    (list of numpy arrays): List contains 8 subsets data of x with significant features only.
+    """
+
+    # initiate empty list for return variable
+    significant_x = []    
+
+    # iterate through subsets and their corresponding insignificant features
     for x, features in zip(sets_x, unused_features):
-        l.append(np.delete(x,features,1))
-    return l
+        # remove features from subset and store the result into list
+        significant_x.append(np.delete(x,features,1))
+        
+    return significant_x
 
 def standardize(sets_x):
-    l = []
-    for x in sets_x:
-        l.append(generate_features(x, 2, True, with_log=True))
-    return l
+    """Function to generate final features matrix for ML methods.
+    Features matrix will be normalized using standard score (z-score) and 
+    will be expanded using logarithmic and polynomial basis function.
+    Args:
+        sets_x         (list of numpy arrays): List contains 8 subsets data from matrix features x.        
+    Returns:
+        standardized_x (list of numpy arrays): List contains 8 normalized subsets with features data expanded from matrix features x.            
+    """
 
-def make_submission_file(w, features_reductions, filename="prediction.csv"):
+    # initiate empty list for return variable
+    standardized_x = []
+
+    # iterate through subsets
+    for x in sets_x:
+        # call preprocess function, normalize and generate features for each subset
+        # and store the result into list
+        standardized_x.append(generate_features(x, 2, True, with_log=True))
+
+    return standardized_x
+
+def make_submission_file(w, unused_features, filename="prediction.csv"):
+    """Function to produce final csv submission file to Kaggle.
+    Args:
+        w                (list of numpy array)              : List contains 8 models for classifying each subset of x.
+        unused_features  (list of int)                      : List contains unused features for each subset of x.
+        filename         (string, default "prediction.csv") : The name of final submission file.  
+    Returns:
+        void
+    """
+
     # load test datasets
     print_banner("7. Read test dataset from higgs-data/test.csv")                    
     test_y, test_x, ind = load_csv_data('higgs-data/test.csv')
@@ -57,7 +118,7 @@ def make_submission_file(w, features_reductions, filename="prediction.csv"):
 
     # Remove features of test datasets based on PRI_JET_NUM and DER_MASS_MMC
     print_banner("9. Remove features in each test subset based on PRI_JET_NUM and DER_MASS_MMC")
-    test_sets_x = remove_features(test_sets_x, features_reductions)    
+    test_sets_x = remove_features(test_sets_x, unused_features)    
 
     # Iterate through the test subsets with their models accordingly
     print_banner("10. Predict each test subset using their corresponding model")              
@@ -75,6 +136,7 @@ def make_submission_file(w, features_reductions, filename="prediction.csv"):
     print_banner("11. Making final submission file with csv format")     
     create_csv_submission(ind, y_pred, filename)
 
+# ---------- Main function goes here ----------
 if __name__ == "__main__":
     # Define the static values of the algorithm.
     max_iters = 5000
@@ -127,7 +189,7 @@ if __name__ == "__main__":
     # Store eight weights into list ws
     ws = []
 
-    print_banner("5. Begin training with logistic regression, print test accuracy for each model")          
+    print_banner("5. Begin classification with logistic regression, print test accuracy for each model")          
     # Iterate through each subsets
     for x, y in zip(sets_x, sets_y):
         # map y to value of either zero or one
