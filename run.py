@@ -182,8 +182,8 @@ if __name__ == "__main__":
     print_banner("3. Remove features in each train subset based on PRI_JET_NUM & DER_MASS_MMC")          
     sets_x = remove_features(sets_x, features_reductions)
 
-    # Perform z-score standardization and transform matrix features into polynomial basis
-    print_banner("4. Standardize and Perform polynomial basis into each matrix features of train subset")              
+    # Perform z-score standardization and transform matrix features into polynomial basis and logarithmic basis
+    print_banner("4. Standardize, Perform logarithmic & polynomial basis function into each matrix features of train subset")              
     sets_x = standardize(sets_x)
 
     # Store eight weights into list ws
