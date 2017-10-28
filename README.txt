@@ -20,10 +20,10 @@ We devide the input data into 8 subsets based on the value of PRI_JET_NUM (featu
 We find out that several features are tightly coupled with the value of PRI_JET_NUM. Since PRI_JET_NUM is ranged inclusively from 
 value of 0 until 3, we devide the input data into 4 subgroups of data based on PRI_JET_NUM value. After splitting the data, we 
 remove features based on their strong correlation with the value of PRI_JET_NUM. The details are as follow:
-1. For PRI_JET_NUM = 0, remove features: [4, 5, 6, 11, 12, 15, 18, 20, 22, 23, 24, 25, 26, 27, 28, 29]
-2. For PRI_JET_NUM = 1, remove features: [4, 5, 6, 11, 12, 15, 18, 20, 22, 26, 27, 28]
-3. For PRI_JET_NUM = 2, remove features: [11, 15, 18, 20, 22, 28]
-4. For PRI_JET_NUM = 3, remove features: [11, 15, 18, 20, 22, 28]
+1. For PRI_JET_NUM = 0, remove features: [4, 5, 6, 11, 12, 15, 18, 20, 22, 23, 24, 25, 26, 27, 28, 29].
+2. For PRI_JET_NUM = 1, remove features: [4, 5, 6, 11, 12, 15, 18, 20, 22, 26, 27, 28].
+3. For PRI_JET_NUM = 2, remove features: [11, 15, 18, 20, 22, 28].
+4. For PRI_JET_NUM = 3, remove features: [11, 15, 18, 20, 22, 28].
 From these 4 subgroups, we devide again each subgroup into two subsets based on outliers on DER_MASS_MMC.
 So at the end, we have 8 subsets of data to obtain a model each.
 We define this step directly in both implementations.py and run.py. In run.py, it is described on create_subsets() and 
