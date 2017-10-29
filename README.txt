@@ -91,7 +91,7 @@ How to use implementations.ipynb - Jupyter Notebook:
 3. Follow the steps on each cell to produce and display results in nice HTML format.
 
 
-Team - IST:
+Team - "Lovely Guys":
 - Cheng-Chun Lee : (cheng-chun.lee@epfl.ch)
 - Haziq Razali : (muhammad.binrazali@epfl.ch)
 - Sanadhi Sutandi : (i.sutandi@epfl.ch)

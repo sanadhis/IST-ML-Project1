@@ -105,7 +105,7 @@ Our final result can be produced by executing script run.py.
 
 4. Follow the steps on each cell to produce and display results in nice HTML format.
 
-## Team - IST
+## Team - "Lovely Guys"
 [Project Repository Page](https://github.com/sanadhis/IST_ML_Project1)
 - Cheng-Chun Lee ([@wlo2398219](https://github.com/wlo2398219)) : (cheng-chun.lee@epfl.ch)
 - Haziq Razali ([@haziqrazali](https://github.com/haziqrazali)): (muhammad.binrazali@epfl.ch)
