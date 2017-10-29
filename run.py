@@ -183,7 +183,7 @@ if __name__ == "__main__":
     sets_x = remove_features(sets_x, features_reductions)
 
     # Perform z-score standardization and transform matrix features into polynomial basis and logarithmic basis
-    print_banner("4. Standardize, Perform logarithmic & polynomial basis function into each matrix features of train subset")              
+    print_banner("4. Standardize, Perform logarithmic & polynomial & cross_term & square root basis function into each matrix features of train subset")              
     sets_x = standardize(sets_x)
 
     # Store eight weights into list ws

@@ -100,13 +100,43 @@ def polynomial_basis(x, degree):
 
     return poly_features_x
 
-def generate_features(x, degree, with_ones = True, with_log = False):
+def cross_terms_basis(x):
+
+    # store each cross-term basis features into list
+    cross_features_x = []
+
+    for i in range(x.shape[1]):
+        for j in range(i+1, x.shape[1]):
+            cross_term = (x[:, i] * x[:, j])
+            cross_term = normalize_data(cross_term)
+            cross_features_x.append(cross_term)
+
+    cross_features_x = np.array(cross_features_x).squeeze().T
+
+    return cross_features_x
+
+
+def sqrt_basis(x):
+    
+    # Find minimum value per feature
+    min_ = np.min(x, axis=0)
+    
+    # generate sqrt term
+    sqrt_x = np.sqrt(x-min_)
+    
+    sqrt_x = normalize_data(sqrt_x)
+
+    return sqrt_x
+
+def generate_features(x, degree, with_ones = True, with_log = False, with_sqrt = False, cross_terms = False):
     """Function to standardize data input and generate features.
     Args:
         x              (numpy array)            : Matrix features of size N x D.
         degree         (int, scalar)            : Degree of polynomial basis function.
         with_ones      (boolean, default true)  : Boolean value to indicate either adding feature column with ones value or not.
         with_logs      (boolean, default false) : Boolean value to indicate either generating features with log basis function or not.
+        with_sqrt      (boolean, default false) : Boolean value to indicate either generating features with square root basis function or not.
+        cross_terms    (boolean, default false) : Boolean value to indicate either generating features with cross terms (Xi*Xj) basis function or not.
     Returns:
         preprocessed_x (numpy array)            : Final matrix features to be processed using ML methods. Minimal size of N x D.
     """
@@ -141,5 +171,13 @@ def generate_features(x, degree, with_ones = True, with_log = False):
         tmp       = np.ones([preprocessed_x.shape[0], preprocessed_x.shape[1] + 1])
         tmp[:,1:] = preprocessed_x
         preprocessed_x   = tmp
+
+    if cross_terms:
+        cross_term_features = cross_terms_basis(x)
+        preprocessed_x = np.concatenate((preprocessed_x, cross_term_features), axis = 1)
+    
+    if with_sqrt:
+        sqrt_features = sqrt_basis(x)
+        preprocessed_x = np.concatenate((preprocessed_x, sqrt_features), axis = 1)
 
     return preprocessed_x
