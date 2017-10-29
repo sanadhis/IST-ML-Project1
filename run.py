@@ -91,7 +91,7 @@ def standardize(sets_x):
     for x in sets_x:
         # call preprocess function, normalize and generate features for each subset
         # and store the result into list
-        standardized_x.append(generate_features(x, 2, True, with_log=True))
+        standardized_x.append(generate_features(x, 2, True, with_log=True, with_sqrt=True, cross_terms=True))
 
     return standardized_x
 
@@ -125,7 +125,7 @@ def make_submission_file(w, unused_features, filename="prediction.csv"):
     for x, w, index in zip(test_sets_x, w, indices):
 
         # Perform z-score standardization and transform matrix features of test data into polynomial basis   
-        stand_x = generate_features(x, 2, True, with_log=True)
+        stand_x = generate_features(x, 2, True, with_log=True, with_sqrt=True, cross_terms=True)
 
         # Get the prediction
         y_pred[index] = predict_labels(w, stand_x)
