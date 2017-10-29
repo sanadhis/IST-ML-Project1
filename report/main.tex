@@ -61,7 +61,7 @@ a_{ij} = x_{ij}^2, \ \ b_{ij} = \log (1 + x_{ij}), \ \ c_{ij} = b_{ij}^{-1}, \ \
 E = (X)*(X), \ \ f_{ij} = \sqrt{x_{ij}}
 \end{equation}
 
-bringing the size of each matrix from $ (N \times m_i) $ to $ (N \times (4m_i + 1))$. A drawback of feature augmentation is the increased tendency for models to overfit which we can reduce via regularization. Note that we have also append a column vector of ones to the final matrix to act as the bias term present in linear models. 
+bringing the size of each matrix from $ (N \times m_i) $ to $ (N \times (6m_i + 1))$. A drawback of feature augmentation is the increased tendency for models to overfit which we can reduce via regularization. Note that we have also append a column vector of ones to the final matrix to act as the bias term present in linear models. 
 
 \begin{figure*}[t]
 \begin{center}
@@ -102,7 +102,7 @@ We experiment with the following linear models: Least Squares and Logistic Regre
 		\hline
         Jet 3 without mass & 94.177 & 96.208 \\
 		\hline
-        Ensemble & - & - \\
+        Ensemble & 83.167 & 82.399 \\
 		\hline
 		\end{tabu}
 	\medskip
