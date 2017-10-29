@@ -101,10 +101,17 @@ def polynomial_basis(x, degree):
     return poly_features_x
 
 def cross_terms_basis(x):
+    """Function to generate cross term function for matrix features of x.
+    Args:
+        x              (numpy array): Matrix features of size N x D.
+    Returns:
+        log_features_x (numpy array): Matrix cross term features of size N x (D-2)!.
+    """
 
     # store each cross-term basis features into list
     cross_features_x = []
 
+    # Iterate through features and create the cross-term
     for i in range(x.shape[1]):
         for j in range(i+1, x.shape[1]):
             cross_term = (x[:, i] * x[:, j])
@@ -115,15 +122,21 @@ def cross_terms_basis(x):
 
     return cross_features_x
 
-
 def sqrt_basis(x):
-    
+    """Function to generate square root basis function for matrix features of x.
+    Args:
+        x      (numpy array): Matrix features of size N x D.
+    Returns:
+        sqrt_x (numpy array): Matrix square root features of size N x D.
+    """
+
     # Find minimum value per feature
     min_ = np.min(x, axis=0)
     
-    # generate sqrt term
-    sqrt_x = np.sqrt(x-min_)
+    # generate square root term
+    sqrt_x = np.sqrt(x - min_)
     
+    # normalize square root features using standard score
     sqrt_x = normalize_data(sqrt_x)
 
     return sqrt_x
@@ -172,12 +185,20 @@ def generate_features(x, degree, with_ones = True, with_log = False, with_sqrt =
         tmp[:,1:] = preprocessed_x
         preprocessed_x   = tmp
 
+    # if generating with cross term basis function
     if cross_terms:
+        # generate cross term basis function for matrix input x        
         cross_term_features = cross_terms_basis(x)
+
+        # combine cross term basis features into final matrix        
         preprocessed_x = np.concatenate((preprocessed_x, cross_term_features), axis = 1)
     
+    # if generating with square root basis function    
     if with_sqrt:
+        # generate square root basis function for matrix input x                
         sqrt_features = sqrt_basis(x)
+
+        # combine square root basis features into final matrix                
         preprocessed_x = np.concatenate((preprocessed_x, sqrt_features), axis = 1)
 
     return preprocessed_x
