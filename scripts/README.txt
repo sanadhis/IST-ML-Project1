@@ -30,7 +30,9 @@ contains our functions for features processing and features generation:
 2. clean_data : (Removing outliers {-999} from dataset)
 3. log_basis : (Features generation using logarithmic basis)
 4. polynomial_basis : (Features generation using polynomial basis)
-5. generate_features : (Wrap-up function for the first 4 functions)
+5. cross_term_basis : (Features generation using cross-term basis)
+6. sqrt_basis : (Features generation using square root basis)
+7. generate_features : (Wrap-up function for the first 4 functions)
 
 ### proj1_helpers.py
 contains the three helpers function related of reading data and making submission file:
