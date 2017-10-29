@@ -30,8 +30,8 @@ We define this step directly in both implementations.ipynb and run.py. In run.py
 remove_features() functions.
 
 ### Features Processing and Generation
-For each subset of input x, we process the features based on Standard score (z-score) and then expand them using logarithmic basis function and polynomial basis function. 
-The implementations of this step are written in preprocess.py on scripts/preprocess.py
+For each subset of input x, we process the features based on Standard score (z-score) and then expand them using logarithmic, 
+polynomial, cross-term, and square root basis function. 
 
 ### Cross-validation
 We validate our models using cross-validation to avoid underfitting or overfitting. Therefore we have two scripts; 
@@ -48,6 +48,9 @@ Project Structure:
 - report: report in LaTeX
 - scripts: all main ML functions and helpers.
 
+Minimum Dependencies
+To execute the implementations.py and run.py, at least you should have [numpy](http://www.numpy.org/):
+
 We implement 6 ML methods in implementations.py as follows:
 1. least_squares_GD : (Linear Regression using Gradient Descent)
 2. least_squares_SGD : (Linear Regression using Stochastic Gradient Descent)
@@ -57,11 +60,11 @@ We implement 6 ML methods in implementations.py as follows:
 6. reg_logistic_regression : (Regularized Logistic Regression using Gradient Descent)
 
 We produce our final submission using run.py with the result as follows:
-Note: In run.py, **_we use logistic regression_** to produce our final submission.
+Note: In run.py, we use logistic regression to produce our final submission.
 Public leaderboard:
-  - 82.254% of accuracy.
+  - 82.917% of accuracy.
 Private Leadeboard:
-  - 82.254% of accuracy.
+  - TBD% of accuracy.
 
 
 How to use implementations.py:
