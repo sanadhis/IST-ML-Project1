@@ -124,7 +124,7 @@ def make_submission_file(w, unused_features, filename="prediction.csv"):
     print_banner("10. Predict each test subset using their corresponding model")              
     for x, w, index in zip(test_sets_x, w, indices):
 
-        # Perform z-score standardization and transform matrix features of test data into polynomial basis   
+        # Perform z-score standardization and expand matrix features with logarithmic & polynomial & cross_term & square root basis function
         stand_x = generate_features(x, 2, True, with_log=True, with_sqrt=True, cross_terms=True)
 
         # Get the prediction
@@ -182,7 +182,7 @@ if __name__ == "__main__":
     print_banner("3. Remove features in each train subset based on PRI_JET_NUM & DER_MASS_MMC")          
     sets_x = remove_features(sets_x, features_reductions)
 
-    # Perform z-score standardization and transform matrix features into polynomial basis and logarithmic basis
+    # Perform z-score standardization and expand matrix features with logarithmic & polynomial & cross_term & square root basis function
     print_banner("4. Standardize, Perform logarithmic & polynomial & cross_term & square root basis function into each matrix features of train subset")              
     sets_x = standardize(sets_x)
 
@@ -209,6 +209,6 @@ if __name__ == "__main__":
         ws.append(w)
 
     # Produce the final-submission file
-    print()
+    print("")
     print_banner("Apply models to test data and produce final submission file")
     make_submission_file(ws, features_reductions, "final-submission.csv")
