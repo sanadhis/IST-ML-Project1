@@ -48,13 +48,17 @@ We plot of a histogram of all variables and split according to the observation (
 
 \subsection{Feature Expansion}
 Next, we augment all 8 feature matrices with non-linear transformations of the raw data to increase the expressive power of our models. More specifically, for each matrix ${\textbf X_i}$ we concatenate as follows:
-
+\vspace*{-1mm}
 \begin{equation}
-{\textbf X} \leftarrow \big[ \ {\textbf X} \ \vert \ {\textbf A} \ \vert \ {\textbf B} \ \vert \ {\textbf d} \ \big]
+{\textbf X} \leftarrow \big[ \ {\textbf X} \ \vert \ {\textbf A} \ \vert \ {\textbf B} \ \vert \ {\textbf C} \ \vert \ {\textbf d} \ \vert \ {\textbf E} \ \vert \ {\textbf F} \ \big]
 \end{equation}
 \vspace*{-5mm}
 \begin{equation}
 a_{ij} = x_{ij}^2, \ \ b_{ij} = \log (1 + x_{ij}), \ \ c_{ij} = b_{ij}^{-1}, \ \ d_{i} = 1 
+\end{equation}
+\vspace*{-5mm}
+\begin{equation}
+E = (X)*(X), \ \ f_{ij} = \sqrt{x_{ij}}
 \end{equation}
 
 bringing the size of each matrix from $ (N \times m_i) $ to $ (N \times (4m_i + 1))$. A drawback of feature augmentation is the increased tendency for models to overfit which we can reduce via regularization. Note that we have also append a column vector of ones to the final matrix to act as the bias term present in linear models. 
@@ -82,21 +86,21 @@ We experiment with the following linear models: Least Squares and Logistic Regre
 		\cline{2-3}
 		& Logistic Regression & Least Squares \\
 		\hline
-		Jet 0 with mass & 80.627 & 79.957 \\
+		Jet 0 with mass & 80.836 & 80.458 \\
 		\hline
-		Jet 0 without mass & 94.877 & 94.786 \\
+		Jet 0 without mass & 95.050 & 95.035 \\
 		\hline
-        Jet 1 with mass & 78.787 & 75.902 \\
+        Jet 1 with mass & 79.499 & 78.312 \\
 		\hline
-        Jet 1 without mass & 91.680 & 91.693 \\
+        Jet 1 without mass & 92.290 & 92.542 \\
 		\hline
-        Jet 2 with mass & 82.250 & 79.184 \\
+        Jet 2 with mass & 83.526 & 82.187 \\
 		\hline
-        Jet 2 without mass & 90.746 & 90.237 \\
+        Jet 2 without mass & 92.107 & 92.988 \\
 		\hline
-        Jet 3 with mass & 81.494 & 78.283 \\
+        Jet 3 with mass & 82.675 & 81.476 \\
 		\hline
-        Jet 3 without mass & 93.129 & 92.993 \\
+        Jet 3 without mass & 94.177 & 96.208 \\
 		\hline
         Ensemble & - & - \\
 		\hline
