@@ -62,7 +62,7 @@ We implement 6 ML methods in implementations.py as follows:
 We produce our final submission using run.py with the result as follows:
 Note: In run.py, we use logistic regression to produce our final submission.
 Public leaderboard:
-  - 82.917% of accuracy.
+  - 82.842% of accuracy.
 Private Leadeboard:
   - TBD% of accuracy.
 
