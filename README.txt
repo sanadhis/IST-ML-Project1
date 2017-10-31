@@ -64,7 +64,7 @@ Note: In run.py, we use logistic regression to produce our final submission.
 Public leaderboard:
   - 82.842% of accuracy.
 Private Leadeboard:
-  - TBD% of accuracy.
+  - 82.753% of accuracy.
 
 
 How to use implementations.py:

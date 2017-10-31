@@ -60,7 +60,7 @@ Our final result can be produced by executing script run.py.
 * Public leaderboard
   - **82.842%** of accuracy.
 * Private Leadeboard
-  - **TBD%** of accuracy.
+  - **82.753%** of accuracy.
 
 ## How to use implementations.py
 
